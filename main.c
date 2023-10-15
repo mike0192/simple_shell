@@ -11,9 +11,12 @@
 int main(int argc, char *argv[])
 {
 	(void)argc, (void)argv;
-	char *buf = NULL;
+	char *buf = NULL, *token;
 	size_t count = 0;
 	ssize_t nread;
+	pid_t child_pid;
+	int i, status;
+	char **array;
 
 	while (1)
 	{
@@ -26,7 +29,40 @@ int main(int argc, char *argv[])
 			perror("Exiting Shell");
 			exit(1);
 		}
-		printf("%s", buf);
+
+		token = strtok(buf, "\n");
+
+		array = malloc(sizeof(char*) * 1024);
+		i = 0;
+		while (token)
+		{
+			array[i] = token;
+			token = strtok(NULL, "\n");
+			i++;
+		}
+
+		array[i] = NULL;
+
+		child_pid =fork();
+
+		if (child_pid == -1)
+		{
+			perror("Failed to create.");
+			exit(41);
+		}
+
+		if (child_pid == 0)
+		{
+			if(execve(array[0], array, NULL) == -1)
+			{
+				perror("Failed to execute");
+				exit(97);
+			}
+		}
+		else
+		{
+			wait(&status);
+		}
 	}
 	free(buf);
 	return (0);
