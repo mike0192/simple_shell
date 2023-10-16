@@ -1,20 +1,27 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "main.h"
 
 int main(void)
 {
 	pid_t pid;
+	pid_t ppid;
 
-	printf("before forky i was one\n");
-
-	fork();
+	pid = fork();
 
 	if (pid == -1)
 	{
-		perror("Failed\n);
+		perror("Failed\n");
 		return (1);
 	}
-
-	printf("after forky i become two\n");
+	if(pid == 0)
+	{
+		sleep(40);
+		printf("hey dad\n");
+	}
+	else
+	{
+		ppid = getpid();
+		printf("hey son: %u\n", ppid);
+	}
 
 	return (0);
+}

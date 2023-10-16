@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <unstid.h>
+#include "main.h"
 
 int main(void)
 {
@@ -8,7 +7,7 @@ int b = 4;
 int mult = a * b;
 pid_t ppid;
 
-pid = getppid();
+ppid = getppid();
 
 printf("mult is %d\n", mult);
 printf("ppid is %u\n", ppid);
