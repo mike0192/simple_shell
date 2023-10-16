@@ -1,6 +1,6 @@
 #include "main.h"
 
-int main(void)
+int function2(void)
 {
 int a = 4;
 int b = 4;
