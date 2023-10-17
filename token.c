@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * tokenizer - Tokenizes a given string into an array of strings.
+ * @line: The input string to tokenize.
+ *
+ * Return: A dynamically allocated array of strings containing the tokens,
+ *          or NULL if the input is invalid or if memory allocation fails.
+ */
 char **tokenizer(char *line)
 {
 	char *token = NULL, *tmp = NULL;

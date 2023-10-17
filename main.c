@@ -2,7 +2,7 @@
 /**
  * main - Simple Shell main function
  * @ac: Count of arguments
- * @av: Arguments
+ * @argv: Array of aguments
  * Return: 0 Always (success)
  */
 int main(int ac, char **argv)

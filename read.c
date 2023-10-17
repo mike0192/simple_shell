@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * read_line - Reads a line of input from the user.
+ *
+ * Return: A pointer to the dynamically allocated string containing the line.
+ * Returns NULL if there was an error or if the end of input is reached.
+ */
 char *read_line(void)
 {
 	char *line = NULL;
@@ -10,7 +16,7 @@ char *read_line(void)
 	write(STDOUT_FILENO, "Shelly$ ", 8);
 
 	n = getline(&line, &len, stdin);
-	if ( n == -1)
+	if (n == -1)
 	{
 		free(line);
 		return (NULL);

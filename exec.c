@@ -1,4 +1,11 @@
 #include "main.h"
+/**
+ * _execute - Executes a command by forking a child process and using execve.
+ * @command: An array of strings representing the command and its arguments.
+ * @envp: An array of strings representing the environment variables.
+ *
+ * Return: The exit status of the child process.
+ */
 int _execute(char **command, char **envp)
 {
 	pid_t son;
@@ -21,7 +28,7 @@ int _execute(char **command, char **envp)
 			waitpid(son, &status, 0);
 			freearray2D(command);
 		}
-		return(WEXITSTATUS(status));
+		return (WEXITSTATUS(status));
 	}
 	return (0);
 }
