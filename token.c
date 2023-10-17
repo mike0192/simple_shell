@@ -8,8 +8,15 @@ char **tokenizer(char *line)
 
 	if (!line)
 		return (NULL);
-	tmp = _strdup(line);
-	token = strtok(line, DELIM);
+	tmp = strdup(line);
+
+	token = strtok(tmp, DELIM);
+	if (token == NULL)
+	{
+		free(line), line = NULL;
+		free(tmp), tmp = NULL;
+		return (NULL);
+	}
 	while (token)
 	{
 		cpR++;
@@ -27,7 +34,7 @@ char **tokenizer(char *line)
 	token = strtok(line, DELIM);
 	while (token)
 	{
-		command[i] = token;
+		command[i] = strdup(token);
 		token = strtok(NULL, DELIM);
 		i++;
 	}

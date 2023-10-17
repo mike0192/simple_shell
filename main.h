@@ -11,8 +11,18 @@
 #include <fcntl.h>
 #include <string.h>
 
+#define DELIM " \t\n"
+extern char **enviq;
+
 char *read_line(void);
-int fucntion1(void);
-int fucntion2(void);
-int function3(void);
+char **tokenizer(char *line);
+void freearray2D(char **xrx);
+
+char *_strdup(const char *str);
+int _strcmp(char *s1, char *s2);
+int _strlen(char *s);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+int _execute(char **command, char **argv);
+int function(int a, int b);
 #endif /* MAIN_H */
