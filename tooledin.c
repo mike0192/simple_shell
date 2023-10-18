@@ -19,5 +19,6 @@ void freearray2D(char **xrx)
 		free(xrx[i]);
 		xrx[i] = NULL;
 	}
+	free(xrx), xrx = NULL;
 
 }
