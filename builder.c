@@ -32,7 +32,7 @@ void handle_builtin (char **command, char **argv, int *status, int x)
 	if (_strcmp(command[0], "exit") == 0)
 		exit_shell(command, status, argv, x);
 	else if (_strcmp(command[0], "env") == 0)
-		print_env(command, status, envirom);
+		print_env(command, status);
 }
 /**
  * exit_shell - Exits the shell with the specified status.
@@ -42,7 +42,7 @@ void handle_builtin (char **command, char **argv, int *status, int x)
  */
 void exit_shell(char **command, int *status, char **argv, int x)
 {
-	int exit_value = (*status);
+	int exit_value = *status;
 	char *index, mssg[] = ": exit: Illegal number: ";
 
 	if (command[1])
@@ -62,7 +62,7 @@ void exit_shell(char **command, int *status, char **argv, int x)
 			write(STDERR_FILENO, "\n", 1);
 			free(index);
 			freearray2D(command);
-			(*status) = 2;
+			*status = 2;
 			return;
 		}
 		freearray2D(command);
@@ -75,9 +75,10 @@ void exit_shell(char **command, int *status, char **argv, int x)
  * @envirom: The array of environment variables.
  * @status: The exit status.
  */
-void print_env(char **command, char **envirom, int *status)
+void print_env(char **command, int *status)
 {
 	int i;
+	extern char **envirom;
 	(void) status;
 
 	for (i = 0; envirom[i]; i++)
@@ -86,5 +87,5 @@ void print_env(char **command, char **envirom, int *status)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	freearray2D(command);
-	(*status) = 0;
+	*status = 0;
 }

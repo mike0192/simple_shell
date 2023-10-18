@@ -2,11 +2,11 @@
 /**
  * _execute - Executes a command by forking a child process and using execve.
  * @command: An array of strings representing the command and its arguments.
- * @envp: An array of strings representing the environment variables.
+ * @argv: An array of strings representing the environment variables.
  * @x: An integer representing some parameter.
  * Return: The exit status of the child process.
  */
-int _execute(char **command, char **envp, int x)
+int _execute(char **command, char **argv, int x)
 {
 	char *cmd;
 	pid_t son;
@@ -15,7 +15,7 @@ int _execute(char **command, char **envp, int x)
 	cmd = _getpath(command[0]);
 	if (!cmd)
 	{
-		print_error(envp[0], command[0], x);
+		print_error(argv[0], command[0], x);
 		freearray2D(command);
 		return (127);
 	}
@@ -23,7 +23,7 @@ int _execute(char **command, char **envp, int x)
 	son = fork();
 	if (son == 0)
 	{
-		if (execve(cmd, command, envp) == -1)
+		if (execve(cmd, command, argv) == -1)
 		{
 			free(cmd), cmd = NULL;
 			freearray2D(command);
