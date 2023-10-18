@@ -54,7 +54,7 @@ void exit_shell(char **command, int *status)
  * @envirom: The array of environment variables.
  * @status: The exit status.
  */
-void print_env(char **command, int *status, char **envirom)
+void print_env(char **command, int *status)
 {
 	int i;
 	(void) status;

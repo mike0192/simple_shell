@@ -12,7 +12,7 @@
 #include <fcntl.h>
 
 #define DELIM " \t\n"
-
+extern char **envirom;
 char *read_line(void);
 char **tokenizer(char *line);
 void freearray2D(char **xrx);
