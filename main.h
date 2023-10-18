@@ -12,7 +12,6 @@
 #include <fcntl.h>
 
 #define DELIM " \t\n"
-extern char **enviq;
 
 char *read_line(void);
 char **tokenizer(char *line);
@@ -20,6 +19,11 @@ void freearray2D(char **xrx);
 char *_getenv(char *boom, char **enviq);
 char *_getpath(char *commy);
 void print_error(char *name, char *cd, int x);
+
+int is_builtin(char *command);
+void handle_builtin (char **command, char **argv, int *status, int x);
+void exit_shell(char **command, int *status);
+void print_env(char **command, int *status);
 
 char *_strdup(const char *str);
 int _strcmp(char *s1, char *s2);
