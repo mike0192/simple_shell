@@ -33,4 +33,6 @@ char *_strcpy(char *dest, char *src);
 int _execute(char **command, char **argv, int x);
 char *_itoa(int z);
 void reverse_string(char *str, int len);
+int _atoi(char *str);
+int is_positive_number(char *str);
 #endif /* MAIN_H */

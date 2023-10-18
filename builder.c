@@ -1,4 +1,5 @@
 #include "main.h"
+char **envirom;
 /**
  * is_builtin - Checks if a command is a built-in command.
  *
@@ -42,50 +43,51 @@ void handle_builtin (char **command, char **argv, int *status, int x)
  */
 void exit_shell(char **command, int *status, char **argv, int x)
 {
-	int exit_value = *status;
-	char *index, mssg[] = ": exit: Illegal number: ";
+    int exit_value = *status;
+    char *index, mssg[] = ": exit: Illegal number: ";
 
-	if (command[1])
-	{
-		if (is_positive_number(command[1]))
-		{
-			exit_value = atoi(command[1]);
-		}
-		else
-		{
-			index = _itoa(x);
-			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
-			write(STDERR_FILENO, ": ", 2);
-			write(STDERR_FILENO, index, _strlen(index));
-			write(STDERR_FILENO, command[1], _strlen(command[1]));
-			write(STDERR_FILENO, mssg, _strlen(mssg));
-			write(STDERR_FILENO, "\n", 1);
-			free(index);
-			freearray2D(command);
-			*status = 2;
-			return;
-		}
-		freearray2D(command);
-		exit(exit_value);
+    if (command[1])
+    {
+        if (is_positive_number(command[1]))
+        {
+            exit_value = atoi(command[1]);
+        }
+        else
+        {
+            index = _itoa(x);
+            write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+            write(STDERR_FILENO, ": ", 2);
+            write(STDERR_FILENO, index, _strlen(index));
+            write(STDERR_FILENO, command[1], _strlen(command[1]));
+            write(STDERR_FILENO, mssg, _strlen(mssg));
+            write(STDERR_FILENO, "\n", 1);
+            free(index);
+            freearray2D(command);
+            *status = 2;
+            return;
+        }
+    }
+    freearray2D(command);
+    exit(exit_value);
 }
+
 /**
  * print_env - Prints the environment variables.
  *
  * @command: The command and arguments array.
- * @envirom: The array of environment variables.
  * @status: The exit status.
  */
 void print_env(char **command, int *status)
 {
-	int i;
-	extern char **envirom;
-	(void) status;
+    int i;
+    extern char **envirom;
+    (void) status;
 
-	for (i = 0; envirom[i]; i++)
-	{
-		write(STDOUT_FILENO, envirom[i], _strlen(envirom[i]));
-		write(STDOUT_FILENO, "\n", 1);
-	}
-	freearray2D(command);
-	*status = 0;
+    for (i = 0; envirom[i]; i++)
+    {
+        write(STDOUT_FILENO, envirom[i], _strlen(envirom[i]));
+        write(STDOUT_FILENO, "\n", 1);
+    }
+    freearray2D(command);
+    *status = 0;
 }

@@ -1,5 +1,10 @@
 #include "main.h"
-
+/**
+ * is_positive_number - Checks if the given string represents a positive number.
+ *
+ * @str: The string to check.
+ * Return: 1 if the string represents a positive number, 0 otherwise.
+ **/
 int is_positive_number(char *str)
 {
 	int i;
@@ -12,6 +17,12 @@ int is_positive_number(char *str)
 	}
 	return (1);
 }
+/**
+ * _atoi - Converts the given string to an integer value.
+ *
+ * @str: The string to convert.
+ * Return: The integer value of the string.
+ */
 int _atoi(char *str)
 {
 	int i, num = 0;
