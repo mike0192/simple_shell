@@ -17,12 +17,16 @@ extern char **enviq;
 char *read_line(void);
 char **tokenizer(char *line);
 void freearray2D(char **xrx);
+char *_getenv(char *boom, char **enviq);
+char *_getpath(char *commy);
+void print_error(char *name, char *cd, int x);
 
 char *_strdup(const char *str);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
-int _execute(char **command, char **argv);
-int function(int a, int b);
+int _execute(char **command, char **argv, int x);
+char *_itoa(int z);
+void reverse_string(char *str, int len);
 #endif /* MAIN_H */
