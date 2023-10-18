@@ -1,4 +1,11 @@
 #include "main.h"
+/**
+ * _getpath - Retrieves the full path of a command by searching the directories
+ * specified in the "PATH" environment variable.
+ *
+ * @commy: The command name.
+ * Return: The full path of the command if found, or NULL otherwise.
+ */
 char *_getpath(char *commy)
 {
 	char *pathy, *cmd, *l;

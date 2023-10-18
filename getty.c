@@ -1,4 +1,11 @@
 #include "main.h"
+/**
+ * _getenv - Retrieves the value of an environment variable.
+ *
+ * @boom: The name of the environment variable.
+ * @enviq: The array of environment variables.
+ * Return: The value of the environment variable if found, or NULL otherwise.
+ */
 char *_getenv(char *boom, char **enviq)
 {
 	char *c, *ff, *ed, *mu;
@@ -10,7 +17,7 @@ char *_getenv(char *boom, char **enviq)
 		ff = strtok(c, "=");
 		if (_strcmp(ff, boom) == 0)
 		{
-			ed =strtok(NULL, "\n");
+			ed = strtok(NULL, "\n");
 			mu = _strdup(ed);
 			free(c);
 			return (mu);

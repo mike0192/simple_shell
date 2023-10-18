@@ -23,7 +23,7 @@ void freearray2D(char **xrx)
 
 }
 /**
- * Prints an error message to the standard error stream.
+ * print_error - Prints an error message to the standard error stream.
  *
  * @name: The name or identifier associated with the error.
  * @cd: The error message or description.
@@ -44,7 +44,7 @@ void print_error(char *name, char *cd, int x)
 	free(idl);
 }
 /**
- * Reverses a string in-place.
+ * reverse_string - Reverses a string in-place.
  *
  * @str: The string to be reversed.
  * @len: The length of the string.
@@ -65,10 +65,10 @@ void reverse_string(char *str, int len)
 	}
 }
 /**
- * Converts an integer to a string representation.
+ * _itoa - Converts an integer to a string representation.
  *
  * @z: The integer to be converted.
- * @return: The string representation of the integer.
+ * Return: The string representation of the integer.
  */
 char *_itoa(int z)
 {
@@ -87,6 +87,6 @@ char *_itoa(int z)
 }
 buffer[i] = '\0';
 reverse_string(buffer, i);
-return(_strdup(buffer));
+return (_strdup(buffer));
 }
 

@@ -17,17 +17,17 @@ int _execute(char **command, char **envp, int x)
 	{
 		print_error(envp[0], command[0], x);
 		freearray2D(command);
-		return(127);
+		return (127);
 	}
 
 	son = fork();
 	if (son == 0)
 	{
-			if (execve(cmd, command, envp) == -1)
-			{
-				free(cmd), cmd = NULL;
-				freearray2D(command);
-			}
+		if (execve(cmd, command, envp) == -1)
+		{
+			free(cmd), cmd = NULL;
+			freearray2D(command);
+		}
 	}
 		else
 		{
@@ -36,5 +36,4 @@ int _execute(char **command, char **envp, int x)
 			free(cmd), cmd = NULL;
 		}
 		return (WEXITSTATUS(status));
-	
 }
