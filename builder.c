@@ -30,7 +30,7 @@ int is_builtin(char *command)
  * Its purpose and usage depend on the specific implementation.
  */
 
-void handle_builtin(char **command, char **argv, int *status, int x)
+void handle_builtin(char **command, char **argv,int *status, int x)
 {
 	if (_strcmp(command[0], "exit") == 0)
 		exit_shell(command, status, argv, x);
@@ -79,7 +79,6 @@ exit(exit_value);
  * @command: The command and arguments array.
  * @status: The exit status.
  */
-extern char **envirom;
 
 void print_env(char **command, int *status)
 {
