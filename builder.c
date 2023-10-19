@@ -85,7 +85,6 @@ exit(exit_value);
 void print_env(char **command, int *status)
 {
 int i;
-(void) status;
 
 for (i = 0; environ[i]; i++)
 {

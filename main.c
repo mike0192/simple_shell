@@ -30,7 +30,6 @@ int main(int ac, char **argv)
 		else
 
 		status = _execute(command, argv, x);
-		freearray2D(command);
 
 	}
 
