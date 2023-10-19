@@ -52,7 +52,7 @@ if (command[1])
 {
 if (is_positive_number(command[1]))
 {
-exit_value = atoi(command[1]);
+exit_value = _atoi(command[1]);
 }
 else
 {
