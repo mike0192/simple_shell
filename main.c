@@ -13,7 +13,7 @@ int main(int ac, char **argv)
 
 	while (1)
 	{
-		line = read_line();
+		line = custom_getline();
 		if (line == NULL)
 		{
 			if (isatty(STDIN_FILENO))
@@ -30,7 +30,10 @@ int main(int ac, char **argv)
 		else
 
 		status = _execute(command, argv, x);
+		freearray2D(command);
+		free(line);
 
 	}
+	return (0);
 
 }

@@ -12,7 +12,10 @@
 #include <fcntl.h>
 
 #define DELIM " \t\n"
+#define BUFFER_SIZE 1024
+
 extern char **environ;
+char *custom_getline(void);
 char *read_line(void);
 char **tokenizer(char *line);
 void freearray2D(char **xrx);
