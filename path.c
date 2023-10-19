@@ -8,7 +8,7 @@
  */
 char *_getpath(char *commy)
 {
-	char *pathy, *cmd, *l;
+	char *path_env, *cmd, *l;
 	int i;
 	struct stat st;
 
@@ -22,11 +22,11 @@ char *_getpath(char *commy)
 		}
 	}
 
-	pathy = getenv("PATH");
-	if (!pathy)
+	path_env = getenv("PATH");
+	if (!path_env)
 		return (NULL);
 
-	l = strtok(pathy, ":");
+	l = strtok(path_env, ":");
 	while (l)
 	{
 		cmd = malloc(_strlen(l) + _strlen(commy) + 2);
@@ -37,7 +37,7 @@ char *_getpath(char *commy)
 			_strcat(cmd, commy);
 			if (stat(cmd, &st) == 0)
 			{
-				free(pathy);
+				free(path_env);
 				return (cmd);
 			}
 			free(cmd), cmd = NULL;
@@ -45,6 +45,6 @@ char *_getpath(char *commy)
 			l = strtok(NULL, ":");
 		}
 	}
-	free(pathy);
+	free(path_env);
 	return (NULL);
 }

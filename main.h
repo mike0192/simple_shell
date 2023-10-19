@@ -12,11 +12,11 @@
 #include <fcntl.h>
 
 #define DELIM " \t\n"
-extern char **envirom;
+extern char **environ;
 char *read_line(void);
 char **tokenizer(char *line);
 void freearray2D(char **xrx);
-char *_getenv(char *boom, char **enviq);
+char *_getenv(char *boom);
 char *_getpath(char *commy);
 void print_error(char *name, char *cd, int x);
 

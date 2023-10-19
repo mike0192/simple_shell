@@ -3,24 +3,23 @@
  * _getenv - Retrieves the value of an environment variable.
  *
  * @boom: The name of the environment variable.
- * @enviq: The array of environment variables.
  * Return: The value of the environment variable if found, or NULL otherwise.
  */
-char *_getenv(char *boom, char **enviq)
+char *_getenv(char *boom)
 {
-	char *c, *ff, *ed, *mu;
+	char *c, *ff, *ed, *env;
 	int i;
 
-	for (i = 0; enviq[i]; i++)
+	for (i = 0; environ[i]; i++)
 	{
-		c = _strdup(enviq[i]);
+		c = _strdup(environ[i]);
 		ff = strtok(c, "=");
 		if (_strcmp(ff, boom) == 0)
 		{
 			ed = strtok(NULL, "\n");
-			mu = _strdup(ed);
+			env = _strdup(ed);
 			free(c);
-			return (mu);
+			return (env);
 		}
 		free(c), c = NULL;
 	}

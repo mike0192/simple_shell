@@ -86,9 +86,9 @@ void print_env(char **command, int *status)
 int i;
 (void) status;
 
-for (i = 0; envirom[i]; i++)
+for (i = 0; environ[i]; i++)
 {
-write(STDOUT_FILENO, envirom[i], _strlen(envirom[i]));
+write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 write(STDOUT_FILENO, "\n", 1);
 }
 freearray2D(command);
