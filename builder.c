@@ -1,5 +1,4 @@
 #include "main.h"
-char **envirom;
 /**
  * is_builtin - Checks if a command is a built-in command.
  *
@@ -23,12 +22,15 @@ int is_builtin(char *command)
 /**
  * handle_builtin - Handles built-in commands in the shell.
  *
- * @command: The command and arguments array.
- * @argv: The arguments array.
+ * @command: An array of strings representing the command and its arguments.
+ * @argv: An array of strings representing the environment variables.
+ * It is passed to provide access to the environment variables if needed.
  * @status: The exit status.
- * @x: Additional parameter (if needed).
+ * @x: An integer representing an additional parameter.
+ * Its purpose and usage depend on the specific implementation.
  */
-void handle_builtin (char **command, char **argv, int *status, int x)
+
+void handle_builtin(char **command, char **argv, int *status, int x)
 {
 	if (_strcmp(command[0], "exit") == 0)
 		exit_shell(command, status, argv, x);
@@ -43,32 +45,32 @@ void handle_builtin (char **command, char **argv, int *status, int x)
  */
 void exit_shell(char **command, int *status, char **argv, int x)
 {
-    int exit_value = *status;
-    char *index, mssg[] = ": exit: Illegal number: ";
+int exit_value = *status;
+char *index, mssg[] = ": exit: Illegal number: ";
 
-    if (command[1])
-    {
-        if (is_positive_number(command[1]))
-        {
-            exit_value = atoi(command[1]);
-        }
-        else
-        {
-            index = _itoa(x);
-            write(STDERR_FILENO, argv[0], _strlen(argv[0]));
-            write(STDERR_FILENO, ": ", 2);
-            write(STDERR_FILENO, index, _strlen(index));
-            write(STDERR_FILENO, command[1], _strlen(command[1]));
-            write(STDERR_FILENO, mssg, _strlen(mssg));
-            write(STDERR_FILENO, "\n", 1);
-            free(index);
-            freearray2D(command);
-            *status = 2;
-            return;
-        }
-    }
-    freearray2D(command);
-    exit(exit_value);
+if (command[1])
+{
+if (is_positive_number(command[1]))
+{
+exit_value = atoi(command[1]);
+}
+else
+{
+index = _itoa(x);
+write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+write(STDERR_FILENO, ": ", 2);
+write(STDERR_FILENO, index, _strlen(index));
+write(STDERR_FILENO, command[1], _strlen(command[1]));
+write(STDERR_FILENO, mssg, _strlen(mssg));
+write(STDERR_FILENO, "\n", 1);
+free(index);
+freearray2D(command);
+*status = 2;
+return;
+}
+}
+freearray2D(command);
+exit(exit_value);
 }
 
 /**
@@ -77,17 +79,18 @@ void exit_shell(char **command, int *status, char **argv, int x)
  * @command: The command and arguments array.
  * @status: The exit status.
  */
+extern char **envirom;
+
 void print_env(char **command, int *status)
 {
-    int i;
-    extern char **envirom;
-    (void) status;
+int i;
+(void) status;
 
-    for (i = 0; envirom[i]; i++)
-    {
-        write(STDOUT_FILENO, envirom[i], _strlen(envirom[i]));
-        write(STDOUT_FILENO, "\n", 1);
-    }
-    freearray2D(command);
-    *status = 0;
+for (i = 0; envirom[i]; i++)
+{
+write(STDOUT_FILENO, envirom[i], _strlen(envirom[i]));
+write(STDOUT_FILENO, "\n", 1);
+}
+freearray2D(command);
+*status = 0;
 }

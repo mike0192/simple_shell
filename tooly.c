@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * is_positive_number - Checks if the given string represents a positive number.
+ * is_positive_number - Checks if the given string represents a + number.
  *
  * @str: The string to check.
  * Return: 1 if the string represents a positive number, 0 otherwise.
@@ -8,11 +8,12 @@
 int is_positive_number(char *str)
 {
 	int i;
+
 	if (!str)
 		return (0);
 	for (i = 0; str[i]; i++)
 	{
-		if (str[i] < '0' || str [i] > '9')
+		if (str[i] < '0' || str[i] > '9')
 			return (0);
 	}
 	return (1);
