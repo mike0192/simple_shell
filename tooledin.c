@@ -31,17 +31,17 @@ void freearray2D(char **xrx)
  */
 void print_error(char *name, char *cd, int x)
 {
-	char *idl, mssg[] = ": not found\n";
+	char *index, mssg[] = ": not found\n";
 
 	idl = _itoa(x);
 
 	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, idl, _strlen(idl));
+	write(STDERR_FILENO, index, _strlen(index));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, cd, _strlen(cd));
 	write(STDERR_FILENO, mssg, _strlen(mssg));
-	free(idl);
+	free(index);
 }
 /**
  * reverse_string - Reverses a string in-place.
