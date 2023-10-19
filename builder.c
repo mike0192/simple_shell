@@ -47,7 +47,7 @@ void handle_builtin(char **command, char **argv, int *status, int x)
  */
 void exit_shell(char **command, int *status, char **argv, int x)
 {
-int exit_value = *status;
+int exit_value = (*status);
 char *index, mssg[] = ": exit: Illegal number: ";
 
 if (command[1])
@@ -67,7 +67,7 @@ write(STDERR_FILENO, mssg, _strlen(mssg));
 write(STDERR_FILENO, "\n", 1);
 free(index);
 freearray2D(command);
-*status = 2;
+(*status) = 2;
 return;
 }
 }
@@ -93,5 +93,5 @@ write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 write(STDOUT_FILENO, "\n", 1);
 }
 freearray2D(command);
-*status = 0;
+(*status) = 0;
 }
