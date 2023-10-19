@@ -41,6 +41,8 @@ void handle_builtin(char **command, char **argv, int *status, int x)
  * exit_shell - Exits the shell with the specified status.
  *
  * @command: The command and arguments array.
+ * @argv: The array of command-line arguments passed to the program.
+ * @x: The line number or counter identifier.
  * @status: The exit status.
  */
 void exit_shell(char **command, int *status, char **argv, int x)
