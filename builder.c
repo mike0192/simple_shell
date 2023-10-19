@@ -7,9 +7,7 @@
  */
 int is_builtin(char *command)
 {
-	char *builtin[] = {
-		"exit", "env", "setenv", "cd", NULL
-	};
+	char *builtin[] = {"exit", "env", "setenv", "cd", NULL};
 	int i;
 
 	for (i = 0; builtin[i]; i++)
