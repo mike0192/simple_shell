@@ -41,7 +41,7 @@ void print_error(char *name, char *cd, int x)
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, cd, _strlen(cd));
 	write(STDERR_FILENO, mssg, _strlen(mssg));
-	free(index);
+	free(idl);
 }
 /**
  * reverse_string - Reverses a string in-place.
